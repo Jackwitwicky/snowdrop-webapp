@@ -340,70 +340,61 @@
       <div class="row justify-content-center">
         <div class="col-md-10 p-5 form-wrap">
           <p>Personal Details</p>
-          <form action="#">
+          <%= form_with model: @order do |form| %>
             <div class="row mb-4">
               <div class="form-group col-md-4">
-                <label for="name" class="label">Name</label>
+                <%= form.label :name, class: "label" %>
                 <div class="form-field-icon-wrap">
-                  <span class="icon ion-android-person"></span>
-                  <input type="text" class="form-control" id="name">
+                  <%= form.text_field :name, class: "form-control", required: true %>
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="phone" class="label">Phone</label>
+                <%= form.label :phone, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-android-call"></span>
-                  <input type="text" class="form-control" id="phone">
+                  <%= form.text_field :phone, class: "form-control", required: true %>
                 </div>
               </div>
 
               <div class="form-group col-md-4">
-                <label for="phone" class="label">Delivery Location</label>
+                <%= form.label :location, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-android-call"></span>
-                  <input type="text" class="form-control" id="phone">
+                  <%= form.text_field :location, class: "form-control", required: true %>
                 </div>
               </div>
             </div>
             <p>Order Details</p>
             <div class="row">
               <div class="form-group col-md-4">
-                <label for="persons" class="label">Type of soap</label>
+                <%= form.label :soap_type, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-android-arrow-dropdown"></span>
-                  <select name="persons" id="persons" class="form-control">
-                    <option value="">Turmeric</option>
-                    <option value="">Bear</option>
-                    <option value="">Coconut</option>
-                  </select>
+                  <%= form.select :soap_type, [['Turmeric', 'turmeric'], ['Beer', 'beer'], ['Coconut', 'coconut']], {}, { :class => 'form-control' } %>
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="persons" class="label">Soap Size</label>
+                <%= form.label :soap_size, class: "label" %>
                 <div class="form-field-icon-wrap">
+                  <%= form.select :soap_size, [['Group Pack', 'group_pack'], ['XL Size', 'xl_size'], ['Bath Fizzies', 'bath_fizzies']], {}, { :class => 'form-control' } %>
                   <span class="icon ion-android-arrow-dropdown"></span>
-                  <select name="persons" id="persons" class="form-control">
-                    <option value="">Group Pack</option>
-                    <option value="">XL Size</option>
-                    <option value="">Bath Fizzies</option>
-                  </select>
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="date" class="label">Quantity</label>
+                <%= form.label :quantity, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-calendar"></span>
-                  <input type="number" class="form-control" id="date">
+                  <%= form.number_field :quantity, class: "form-control", required: true %>
                 </div>
               </div>
             </div>
             <p></p>
             <div class="row justify-content-center">
               <div class="col-md-4">
-                <input type="submit" class="btn btn-primary btn-outline-primary btn-block" value="Place Order">
+                <%= form.submit "Place Order", class: "btn btn-primary btn-outline-primary btn-block" %>
               </div>
             </div>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
