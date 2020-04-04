@@ -457,33 +457,34 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 p-5 form-wrap">
-          <form action="#">
+          <%= form_with model: @contact do |form| %>
             <div class="row mb-4">
               <div class="form-group col-md-4">
-                <label for="name" class="label">Name</label>
+                <%= form.label :name, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-android-person"></span>
-                  <input type="text" class="form-control" id="name">
+                  <%= form.text_field :name, class: "form-control", required: true %>
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="email" class="label">Email</label>
+                <%= form.label :email, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-email"></span>
-                  <input type="email" class="form-control" id="email">
+                  <%= form.email_field :email, class: "form-control", required: true %>
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="phone" class="label">Phone</label>
+                <%= form.label :phone, class: "label" %>
                 <div class="form-field-icon-wrap">
                   <span class="icon ion-android-call"></span>
-                  <input type="text" class="form-control" id="phone">
+                  <%= form.text_field :phone, class: "form-control", required: true %>
                 </div>
               </div>
 
               <div class="form-group col-md-12">
-                <label for="message" class="label">Message</label>
-                <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                <%= form.label :message, class: "label" %>
+                <!--<textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>-->
+                <%= form.text_area :message, class: "form-control", cols: 30, rows: 10, required: true %>
               </div>
             </div>
             <div class="row justify-content-center">
@@ -491,6 +492,8 @@
                 <input type="submit" class="btn btn-primary btn-outline-primary btn-block" value="Send Message">
               </div>
             </div>
+          <% end %>
+          <form action="#">
           </form>
         </div>
       </div>
